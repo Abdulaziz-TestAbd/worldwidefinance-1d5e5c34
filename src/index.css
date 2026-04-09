@@ -94,13 +94,24 @@
   }
 
   .hero-gradient {
-    background: radial-gradient(ellipse at 30% 20%, hsla(30, 15%, 90%, 0.6) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, hsla(42, 65%, 45%, 0.08) 0%, transparent 50%),
+    background: radial-gradient(ellipse at 20% 15%, hsla(42, 70%, 55%, 0.18) 0%, transparent 45%),
+                radial-gradient(ellipse at 75% 25%, hsla(42, 65%, 50%, 0.12) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 70%, hsla(42, 60%, 45%, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 75%, hsla(42, 75%, 60%, 0.08) 0%, transparent 35%),
+                radial-gradient(ellipse at 10% 80%, hsla(42, 65%, 50%, 0.06) 0%, transparent 30%),
                 hsl(var(--background));
   }
 
   .section-gradient {
     background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--card)) 50%, hsl(var(--background)) 100%);
+  }
+
+  .gold-spray {
+    background: radial-gradient(ellipse at 15% 30%, hsla(42, 70%, 55%, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 20%, hsla(42, 60%, 50%, 0.1) 0%, transparent 35%),
+                radial-gradient(ellipse at 60% 75%, hsla(42, 65%, 45%, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 30% 85%, hsla(42, 75%, 60%, 0.06) 0%, transparent 30%),
+                hsl(var(--background));
   }
 
   .gold-glow {
