@@ -6,52 +6,52 @@
 
 @layer base {
   :root {
-    --background: 220 30% 6%;
-    --foreground: 210 20% 92%;
+    --background: 30 20% 95%;
+    --foreground: 220 30% 15%;
 
-    --card: 220 25% 10%;
-    --card-foreground: 210 20% 92%;
+    --card: 30 15% 92%;
+    --card-foreground: 220 30% 15%;
 
-    --popover: 220 25% 10%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 30 15% 92%;
+    --popover-foreground: 220 30% 15%;
 
-    --primary: 42 65% 55%;
-    --primary-foreground: 220 30% 6%;
+    --primary: 42 65% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 50% 18%;
-    --secondary-foreground: 210 20% 92%;
+    --secondary: 30 10% 88%;
+    --secondary-foreground: 220 30% 15%;
 
-    --muted: 220 20% 14%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 30 10% 90%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 215 60% 25%;
-    --accent-foreground: 210 20% 92%;
+    --accent: 215 40% 30%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 215 25% 18%;
-    --input: 215 25% 18%;
-    --ring: 42 65% 55%;
+    --border: 30 15% 82%;
+    --input: 30 15% 82%;
+    --ring: 42 65% 45%;
 
     --radius: 0.75rem;
 
-    --gold: 42 65% 55%;
-    --gold-light: 42 70% 70%;
-    --navy: 220 40% 13%;
-    --navy-deep: 220 30% 6%;
-    --navy-light: 215 35% 20%;
-    --glass: 220 30% 12%;
-    --glass-border: 215 25% 22%;
+    --gold: 42 65% 45%;
+    --gold-light: 42 55% 60%;
+    --navy: 220 30% 20%;
+    --navy-deep: 220 30% 15%;
+    --navy-light: 215 25% 30%;
+    --glass: 30 15% 96%;
+    --glass-border: 30 15% 82%;
 
-    --sidebar-background: 220 25% 10%;
-    --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 42 65% 55%;
-    --sidebar-primary-foreground: 220 30% 6%;
-    --sidebar-accent: 215 60% 25%;
-    --sidebar-accent-foreground: 210 20% 92%;
-    --sidebar-border: 215 25% 18%;
-    --sidebar-ring: 42 65% 55%;
+    --sidebar-background: 30 15% 92%;
+    --sidebar-foreground: 220 30% 15%;
+    --sidebar-primary: 42 65% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 40% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 30 15% 82%;
+    --sidebar-ring: 42 65% 45%;
   }
 }
 
@@ -71,36 +71,36 @@
 
 @layer utilities {
   .glass {
-    background: hsla(var(--glass), 0.6);
+    background: hsla(var(--glass), 0.7);
     backdrop-filter: blur(20px);
-    border: 1px solid hsla(var(--glass-border), 0.4);
-  }
-
-  .glass-strong {
-    background: hsla(var(--glass), 0.85);
-    backdrop-filter: blur(30px);
     border: 1px solid hsla(var(--glass-border), 0.5);
   }
 
+  .glass-strong {
+    background: hsla(var(--glass), 0.92);
+    backdrop-filter: blur(30px);
+    border: 1px solid hsla(var(--glass-border), 0.6);
+  }
+
   .text-gold-gradient {
-    background: linear-gradient(135deg, hsl(var(--gold-light)), hsl(var(--gold)), hsl(var(--gold-light)));
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(42, 50%, 35%), hsl(var(--gold-light)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .bg-gold-gradient {
-    background: linear-gradient(135deg, hsl(var(--gold)), hsl(42, 50%, 45%));
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(42, 50%, 35%));
   }
 
   .hero-gradient {
-    background: radial-gradient(ellipse at 30% 20%, hsla(215, 60%, 25%, 0.4) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, hsla(42, 65%, 55%, 0.08) 0%, transparent 50%),
-                hsl(var(--navy-deep));
+    background: radial-gradient(ellipse at 30% 20%, hsla(30, 15%, 90%, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, hsla(42, 65%, 45%, 0.08) 0%, transparent 50%),
+                hsl(var(--background));
   }
 
   .section-gradient {
-    background: linear-gradient(180deg, hsl(var(--navy-deep)) 0%, hsl(var(--navy)) 50%, hsl(var(--navy-deep)) 100%);
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--card)) 50%, hsl(var(--background)) 100%);
   }
 
   .gold-glow {

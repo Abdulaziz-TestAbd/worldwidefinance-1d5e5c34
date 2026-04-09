@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Globe, Menu, X } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { languages, type Language } from "@/lib/i18n";
+import logo from "@/assets/WorldWideFinance_logo.png";
 
 export default function Header() {
   const { lang, setLang, t } = useLanguage();
@@ -28,9 +29,7 @@ export default function Header() {
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded bg-gold-gradient flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-sm">W</span>
-          </div>
+          <img src={logo} alt="World Wide Finance" className="h-10 w-auto" />
           <span className="font-display text-lg font-semibold tracking-tight text-foreground">
             World Wide <span className="text-gold-gradient">Finance</span>
           </span>
