@@ -1,5 +1,6 @@
 import { Linkedin, Twitter } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import logo from "@/assets/WorldWideFinance_logo.png";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -9,9 +10,7 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded bg-gold-gradient flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xs">W</span>
-            </div>
+            <img src={logo} alt="World Wide Finance" className="h-8 w-auto" />
             <span className="font-display text-sm font-semibold text-foreground">
               World Wide Finance
             </span>
