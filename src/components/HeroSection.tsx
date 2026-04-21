@@ -32,7 +32,7 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs text-muted-foreground mb-8 tracking-widest uppercase"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Trusted by 150+ enterprises across Europe
+            {t("hero.badge")}
           </motion.div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 text-foreground">
@@ -49,12 +49,14 @@ export default function HeroSection() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button variant="hero" size="lg" className="text-base px-8 py-6">
-              {t("hero.cta")}
-              <ArrowRight className="w-4 h-4 ml-1" />
+            <Button asChild variant="hero" size="lg" className="text-base px-8 py-6">
+              <a href="#contact">
+                {t("hero.cta")}
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </a>
             </Button>
-            <Button variant="glass" size="lg" className="text-base px-8 py-6">
-              {t("nav.services")}
+            <Button asChild variant="glass" size="lg" className="text-base px-8 py-6">
+              <a href="#services">{t("nav.services")}</a>
             </Button>
           </motion.div>
         </motion.div>

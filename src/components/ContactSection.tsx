@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Phone, MapPin } from "lucide-react";
+import { Send, Mail, Phone, MapPin, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -12,14 +12,37 @@ const fadeUp = {
   }),
 };
 
+const RECIPIENT_EMAIL = "info@worldwidefinances.com";
+
 export default function ContactSection() {
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const subject = `New inquiry from ${name} — World Wide Finance`;
+    const body =
+      `Name: ${name}\n` +
+      `Email: ${email}\n\n` +
+      `Message:\n${message}`;
+
+    const mailto = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setTimeout(() => {
+      setSubmitted(false);
+      setName("");
+      setEmail("");
+      setMessage("");
+    }, 3000);
   };
 
   return (
@@ -29,14 +52,17 @@ export default function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
+          className="text-center mb-16 max-w-2xl mx-auto"
         >
           <motion.span custom={0} variants={fadeUp} className="text-primary text-sm tracking-widest uppercase font-medium">
-            Reach Out
+            {t("contact.eyebrow")}
           </motion.span>
           <motion.h2 custom={1} variants={fadeUp} className="text-3xl sm:text-4xl font-display font-bold mt-3 text-foreground">
             {t("contact.title")}
           </motion.h2>
+          <motion.p custom={2} variants={fadeUp} className="text-muted-foreground mt-4 text-base">
+            {t("contact.sub")}
+          </motion.p>
         </motion.div>
 
         <motion.div
@@ -46,13 +72,24 @@ export default function ContactSection() {
           className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12"
         >
           {/* Contact info */}
-          <motion.div custom={2} variants={fadeUp} className="space-y-8">
+          <motion.div custom={2} variants={fadeUp} className="space-y-6">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                 <MapPin className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">{t("footer.address")}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
+                  {t("footer.legalName")}
+                </p>
+                <p className="text-sm text-foreground">{t("footer.address")}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <User className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="text-sm text-foreground">{t("footer.director")}</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -60,7 +97,7 @@ export default function ContactSection() {
                 <Phone className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">{t("footer.phone")}</p>
+                <p className="text-sm text-foreground">{t("footer.phone")}</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -68,7 +105,12 @@ export default function ContactSection() {
                 <Mail className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">{t("footer.email")}</p>
+                <a
+                  href={`mailto:${RECIPIENT_EMAIL}`}
+                  className="text-sm text-foreground hover:text-primary transition-colors"
+                >
+                  {RECIPIENT_EMAIL}
+                </a>
               </div>
             </div>
           </motion.div>
@@ -80,8 +122,11 @@ export default function ContactSection() {
               <input
                 type="text"
                 required
+                maxLength={100}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg glass text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
-                placeholder="John Doe"
+                placeholder={t("contact.namePlaceholder")}
               />
             </div>
             <div>
@@ -89,8 +134,11 @@ export default function ContactSection() {
               <input
                 type="email"
                 required
+                maxLength={255}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg glass text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
-                placeholder="john@company.com"
+                placeholder={t("contact.emailPlaceholder")}
               />
             </div>
             <div>
@@ -98,12 +146,15 @@ export default function ContactSection() {
               <textarea
                 required
                 rows={4}
+                maxLength={1000}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg glass text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary resize-none"
-                placeholder="How can we help you?"
+                placeholder={t("contact.messagePlaceholder")}
               />
             </div>
             <Button variant="hero" size="lg" type="submit" className="w-full text-base">
-              {submitted ? "✓ Sent!" : t("contact.send")}
+              {submitted ? t("contact.sent") : t("contact.send")}
               {!submitted && <Send className="w-4 h-4 ml-1" />}
             </Button>
           </motion.form>

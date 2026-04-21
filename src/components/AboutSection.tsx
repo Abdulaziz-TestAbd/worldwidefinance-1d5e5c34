@@ -28,7 +28,9 @@ export default function AboutSection() {
           className="max-w-4xl mx-auto"
         >
           <motion.div custom={0} variants={fadeUp} className="text-center mb-12">
-            <span className="text-primary text-sm tracking-widest uppercase font-medium">Who We Are</span>
+            <span className="text-primary text-sm tracking-widest uppercase font-medium">
+              {t("about.eyebrow")}
+            </span>
             <h2 className="text-3xl sm:text-4xl font-display font-bold mt-3 text-foreground">
               {t("about.title")}
             </h2>
