@@ -154,9 +154,16 @@ export default function ContactSection() {
                 placeholder={t("contact.messagePlaceholder")}
               />
             </div>
-            <Button variant="hero" size="lg" type="submit" className="w-full text-base">
-              {submitted ? t("contact.sent") : t("contact.send")}
-              {!submitted && <Send className="w-4 h-4 ml-1" />}
+            <Button variant="hero" size="lg" type="submit" disabled={status === "sending"} className="w-full text-base">
+              {status === "sending" && t("contact.sending")}
+              {status === "sent" && t("contact.sent")}
+              {status === "error" && t("contact.error")}
+              {status === "idle" && (
+                <>
+                  {t("contact.send")}
+                  <Send className="w-4 h-4 ml-1" />
+                </>
+              )}
             </Button>
           </motion.form>
         </motion.div>
