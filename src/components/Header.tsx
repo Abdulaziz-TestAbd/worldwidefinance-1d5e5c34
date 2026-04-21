@@ -66,7 +66,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-44 rounded-lg glass-strong shadow-xl overflow-hidden"
+                  className="absolute right-0 mt-2 w-44 rounded-lg bg-card border border-border shadow-2xl overflow-hidden"
                 >
                   {languages.map((l) => (
                     <button
