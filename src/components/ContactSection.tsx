@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Send, Mail, Phone, MapPin, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
+import { supabase } from "@/integrations/supabase/client";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,33 +17,33 @@ const RECIPIENT_EMAIL = "info@worldwidefinances.com";
 
 export default function ContactSection() {
   const { t } = useLanguage();
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "sending") return;
 
-    const subject = `New inquiry from ${name} — World Wide Finance`;
-    const body =
-      `Name: ${name}\n` +
-      `Email: ${email}\n\n` +
-      `Message:\n${message}`;
+    setStatus("sending");
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: { name, email, message },
+      });
+      if (error) throw error;
+      if (data && (data as { error?: string }).error) throw new Error((data as { error: string }).error);
 
-    const mailto = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
-
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+      setStatus("sent");
       setName("");
       setEmail("");
       setMessage("");
-    }, 3000);
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch (err) {
+      console.error("Contact form error:", err);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
