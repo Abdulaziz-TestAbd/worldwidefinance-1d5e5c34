@@ -14,9 +14,9 @@ export default function GlobalReachSection() {
   const { t } = useLanguage();
 
   const locations = [
-    { key: "germany", color: "bg-primary" },
-    { key: "poland", color: "bg-accent" },
-    { key: "europe", color: "bg-muted-foreground" },
+    { key: "poland" },
+    { key: "germany" },
+    { key: "europe" },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function GlobalReachSection() {
           className="text-center mb-16"
         >
           <motion.span custom={0} variants={fadeUp} className="text-primary text-sm tracking-widest uppercase font-medium">
-            Our Presence
+            {t("reach.eyebrow")}
           </motion.span>
           <motion.h2 custom={1} variants={fadeUp} className="text-3xl sm:text-4xl font-display font-bold mt-3 text-foreground">
             {t("reach.title")}
