@@ -18,19 +18,16 @@ export default function ServicesSection() {
       icon: Truck,
       titleKey: "services.logistics.title",
       descKey: "services.logistics.desc",
-      tariffKey: "services.logistics.tariff",
     },
     {
       icon: Package,
       titleKey: "services.wholesale.title",
       descKey: "services.wholesale.desc",
-      tariffKey: "services.wholesale.tariff",
     },
     {
       icon: Landmark,
       titleKey: "services.finance.title",
       descKey: "services.finance.desc",
-      tariffKey: "services.finance.tariff",
     },
   ];
 
@@ -67,7 +64,7 @@ export default function ServicesSection() {
                 key={i}
                 custom={i + 2}
                 variants={fadeUp}
-                className="glass rounded-xl p-8 group hover:border-primary/30 transition-all duration-300 flex flex-col"
+                className="glass rounded-xl p-8 group hover:border-primary/30 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
                   <Icon className="w-6 h-6 text-primary" />
@@ -75,17 +72,9 @@ export default function ServicesSection() {
                 <h3 className="text-lg font-display font-semibold text-foreground mb-3">
                   {t(service.titleKey)}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {t(service.descKey)}
                 </p>
-                <div className="pt-4 border-t border-border/50">
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
-                    Tariff
-                  </div>
-                  <div className="text-sm font-medium text-gold-gradient">
-                    {t(service.tariffKey)}
-                  </div>
-                </div>
               </motion.div>
             );
           })}
