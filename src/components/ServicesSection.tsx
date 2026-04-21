@@ -18,19 +18,16 @@ export default function ServicesSection() {
       icon: Truck,
       titleKey: "services.logistics.title",
       descKey: "services.logistics.desc",
-      tariffKey: "services.logistics.tariff",
     },
     {
       icon: Package,
       titleKey: "services.wholesale.title",
       descKey: "services.wholesale.desc",
-      tariffKey: "services.wholesale.tariff",
     },
     {
       icon: Landmark,
       titleKey: "services.finance.title",
       descKey: "services.finance.desc",
-      tariffKey: "services.finance.tariff",
     },
   ];
 
